@@ -1,4 +1,4 @@
-import NavBar from "../Navbar/navbar";
+import NavBar from "../Navbar/Navbar";
 
 export default function UpdateToDo() {
   return (

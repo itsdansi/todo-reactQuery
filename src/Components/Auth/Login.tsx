@@ -42,7 +42,7 @@ function Login() {
         <footer>
           <Link
             className="text-purple-900 hover:text-indigo-700 text-sm float-left"
-            to="/forget-password"
+            to="/forget_password"
           >
             Forgot Password?
           </Link>

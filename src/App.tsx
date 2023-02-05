@@ -1,30 +1,39 @@
 import "./App.css";
-import Login from "./login";
-import Todo from "./todo/todo";
+import Login from "./Components/Auth/Login";
 import {Route, Routes} from "react-router-dom";
-import Accordian from "./todo/accordian";
-import SignUp from "./signUp";
-import ResetPassword from "./resetPassword";
-import ForgetPassword from "./forgetPassword";
-import UpdateToDo from "./todo/updateTodo";
-// import DropDown from "./dropdown";
-// import Login2 from "./login2";
+import SignUp from "./Components/Auth/SignUp";
+import ResetPassword from "./Components/Auth/ResetPassword";
+import ForgetPassword from "./Components/Auth/ForgetPassword";
+
+import {QueryClient, QueryClientProvider} from "react-query";
+import {ReactQueryDevtools} from "react-query-devtools";
+// import UpdateToDo from "./Components/Todo/UpdateTodo";
+import Accordian from "./Components/Todo/Accordian";
+import Todo from "./Components/Home";
+import NotFoundPage from "./Components/NotFoundPage";
+import UpdateToDo from "./Components/Todo/UpdateTodo";
+import TestFetch from "./Components/TestFetch";
+
+const queryClient = new QueryClient({});
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Accordian />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/forget-password" element={<ForgetPassword />} />
-        <Route path="/todo" element={<Todo />} />
-        <Route path="/update-todo" element={<UpdateToDo />} />
-        <Route path="/collaps" element={<Accordian />} />
-        {/* <Route path="/dropdown" element={<DropDown />} /> */}
-        {/* <Route path="/l" element={<Login2 />} /> */}
-      </Routes>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path="/" element={<Todo />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/reset_password" element={<ResetPassword />} />
+          <Route path="/forget_password" element={<ForgetPassword />} />
+          <Route path="/todo" element={<Todo />} />
+          <Route path="/update_todo" element={<UpdateToDo />} />
+          <Route path="/abc" element={<TestFetch />} />
+          <Route path="/*" element={<NotFoundPage />} />
+        </Routes>
+
+        <ReactQueryDevtools initialIsOpen={true} />
+      </QueryClientProvider>
     </>
   );
 }
